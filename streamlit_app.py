@@ -67,67 +67,99 @@ with left_col:
 
         st.subheader("Demographics & Employment")
         gender = st.selectbox("Gender", ["Female", "Male"])
-        state = st.selectbox("State",["IL","TX","NH","CA","RI","ME","CT","NY","FL","MA",
-                                      "VA","OH","PA","WA","MI","GA","NC","NJ","CO","VT"])
-        industry = st.selectbox("Industry",
-                                ["Technology","Education","Healthcare","Finance",
-                                 "Retail","Construction","PublicSector","Manufacturing"])
+        states = ["IL","TX","NH","CA","RI","ME","CT","NY","FL","MA",
+          "VA","OH","PA","WA","MI","GA","NC","NJ","CO","VT"]
 
-        age = st.number_input("Age", min_value=18, max_value=80, value=40)
+        state = st.selectbox("State", states, index=states.index("RI"))
+
+        industries = ["Technology","Education","Healthcare","Finance",
+              "Retail","Construction","PublicSector","Manufacturing"]
+
+        industry = st.selectbox("Industry", industries, index=industries.index("Technology"))
+
+        age = st.number_input("Age", min_value=18, max_value=80, value=51)
         years_with_employer = st.number_input(
             "Years with employer", min_value=0.0, max_value=30.0, value=3.0, step=0.1
         )
-        hours_worked_per_week = st.selectbox("Hours worked per week",
-                                             ["20","25","30","35","40"])
+        hours_list = ["20", "25", "30", "35", "40"]
+        default_hours = "30"
 
-        employment_status = st.selectbox(
-            "Employment status",
-            ["FullTime", "PartTime"],
+        hours_worked_per_week = st.selectbox(
+        "Hours worked per week",
+        hours_list,
+        index=hours_list.index(default_hours)
         )
+
+        statuses = ["FullTime", "PartTime"]
+        employment_status = st.selectbox("Employment status", statuses, index=statuses.index("FullTime"))
+
 
         st.subheader("Plan Design & Benefit Info")
-        benefit_duration = st.selectbox(
-            "Benefit duration",
-            ["2 Years", "5 Years", "To Age 65"],
-        )
+        durations = ["2 Years", "5 Years", "To Age 65"]
+        benefit_duration = st.selectbox("Benefit duration", durations, index=durations.index("To Age 65"))
+
+
+        salary_options = ["<40k", "40-60k", "60-80k", "80-120k", ">120k"]
 
         salary_band = st.selectbox(
-            "Salary band",
-            ["<40k", "40-60k", "60-80k", "80-120k", ">120k"],
+        "Salary band",
+        salary_options,
+        index=salary_options.index("40-60k")
         )
+
+        coverage_options = ["Employer-paid", "Voluntary"]
 
         coverage_type = st.selectbox(
-            "Coverage type",
-            ["Employer-paid", "Voluntary"],
+        "Coverage type",
+        coverage_options,
+        index=coverage_options.index("Employer-paid")
         )
 
+        integration_options = ["Primary", "IntegratedSSDI", "None"]
+
         integration_type = st.selectbox(
-            "Integration type",
-            ["Primary", "IntegratedSSDI", "None"],
+        "Integration type",
+        integration_options,
+        index=integration_options.index("IntegratedSSDI")
         )
 
         ssdi_offset_indicator = st.selectbox(
-            "SSDI offset indicator",
-            ["0", "1"],
+        "SSDI offset indicator",
+        ["0", "1"],
+        index=["0", "1"].index("0")
         )
 
         st.subheader("Plan Parameters")
+        occ_list = ["1", "2", "3", "4"]
+        default_occ = "1"
+
         occupation_class = st.selectbox(
-            "Occupation class",
-            ["1", "2","3","4"],
+        "Occupation class",
+        occ_list,
+        index=occ_list.index(default_occ)
         )
+
+        elim_list = ["30", "60", "90", "180"]
+        default_elim = "90"
+
         elimination_period_days = st.selectbox(
-            "Elimination period (days)",
-            ["30", "60","90","180"],
+        "Elimination period (days)",
+        elim_list,
+        index=elim_list.index(default_elim)
         )
+
+        benefit_pct_list = ["0.4", "0.5", "0.6", "0.7"]
+        default_benefit_pct = "0.6"
+
         benefit_pct = st.selectbox(
-            "Benefit percentage (e.g., 0.6 for 60%)",
-            ["0.4", "0.5","0.6","0.7"],
+        "Benefit percentage (e.g., 0.6 for 60%)",
+        benefit_pct_list,
+        index=benefit_pct_list.index(default_benefit_pct)
         )
 
         max_monthly_benefit = st.number_input(
             "Max monthly benefit",
-            min_value=0.0, max_value=20000.0, value=8000.0, step=500.0,
+            min_value=0.0, max_value=20000.0, value=3000.0, step=500.0,
         )
 
         st.subheader("Exposure Period")
