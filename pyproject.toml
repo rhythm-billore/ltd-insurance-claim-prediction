@@ -1,0 +1,23 @@
+[project]
+name = "ltd-insurance-claim-prediction"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+
+dependencies = [
+    "streamlit",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "xgboost",
+    "shap>=0.45",
+    "joblib",
+    "pyarrow",
+    "matplotlib",
+    "numba>=0.59",
+    "llvmlite>=0.42",
+    "seaborn>=0.13.2",
+    "openpyxl>=3.1.5",
+]
+
