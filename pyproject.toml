@@ -19,5 +19,6 @@ dependencies = [
     "llvmlite>=0.42",
     "seaborn>=0.13.2",
     "openpyxl>=3.1.5",
+    "evidently>=0.7.20",
 ]
 
